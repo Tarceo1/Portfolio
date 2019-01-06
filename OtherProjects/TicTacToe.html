@@ -1,0 +1,337 @@
+<html>
+
+    <head>
+
+        <title>TIC-TAC-TOE</title>
+
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+    
+    
+            body{
+            background:url("../Images/tik-tac-toeBackground.jpg");
+            background-size: 1700px 1000px;
+            background-repeat: no-repeat;
+            padding-top: 40px; 
+            color:black;
+            text-align: center;
+            }
+            
+             h1   
+                  { border:10px solid #000;
+                    border-radius: 15px 35px;
+                    background-color:white;
+                    color:#ffd11a;
+                    padding: 6px;
+                    position:absolute;
+                    top:10px;
+                    left:550px;
+                  }
+            
+
+
+            .Row{
+
+                display: table-row;
+                
+
+            }
+
+ 
+
+            .cell{
+
+                display: table-cell;
+
+                border: inset;
+
+                position: relative;
+
+                border-width: medium;
+
+                padding-left: 3px;
+
+                padding-right: 3px;
+
+                height: 95px;
+
+                width: 95px;
+
+                text-align: center;
+
+                font-size: 40px;
+
+                vertical-align: middle;
+
+            }
+
+        </style>
+
+<script>
+
+            var xPlayer = prompt("Player X what is your name?");
+
+            var oPlayer = prompt("Player O what is your name?");
+
+            var currentPlayer = "X";   
+
+            var xGameTotal = 0;
+
+            var oGameTotal = 0;
+
+            var xWins = 0;
+
+            var oWins = 0;
+
+            var catWins = 0;
+
+            var winsArray = [7, 56, 448, 73, 146, 292, 273, 84];
+
+ 
+
+            /* playerMoved function changes the marker id (X or O) and keeps
+
+             * track of the total points a player has, and checks for a winner. */
+
+function playerMoved(id, value) {
+
+                
+
+                changeMarker(id);
+
+                updatePlayerTotal(value);
+
+ 
+
+                if (checkWinner(xGameTotal)) {
+
+                    xWins++;
+
+                    resetBoard();
+
+                }
+
+ 
+
+                if (checkWinner(oGameTotal)) {
+
+                    oWins++;
+
+                    resetBoard();
+
+                }
+
+ 
+
+                if (oGameTotal + xGameTotal === 511) {
+
+                    catWins++;
+
+                    resetBoard();
+
+                }
+
+ 
+
+                switchPlayers();
+
+            } // end playerMoved
+
+           
+
+/* changeMarker function changes the marker id from X to O and back
+
+             * again */
+
+            function changeMarker(box){
+
+                if (currentPlayer === "X")
+
+                    box.innerHTML = 'X';
+
+                else
+
+                    box.innerHTML = 'O';
+
+            }
+
+           
+
+            /* switchPlayers function switches who goes first, X always starts
+
+             * at the beginning but switching who goes first during multi-game
+
+             * playing */
+
+            function switchPlayers(){
+
+                if (currentPlayer === "X")
+
+                    currentPlayer = "O";
+
+                else
+
+                    currentPlayer = "X";
+
+            }
+
+ 
+
+            /* updatePlayerTotal function adds up each move to help determine
+
+             * the winner of the game */
+
+            function updatePlayerTotal(score) {
+
+                if (currentPlayer === "X")
+
+                    xGameTotal = xGameTotal + score;
+
+                else
+
+                    oGameTotal = oGameTotal + score;
+
+            } 
+
+ 
+
+            /* checkWinner function looks at the winsArray and the players current
+
+             * score to determine if the player has a winning combination */
+
+function checkWinner(score) {
+
+                // Return whether the given score is a winning score
+
+                for (var index = 0; index < winsArray.length; index++)
+
+                {
+
+                    //compare the wins Array occurance bitwise to the current score //
+
+                    if ((winsArray[index] & score) === winsArray[index])
+
+                        return true; //bitwise match - we have a winner!
+
+                }
+
+                return false;
+
+ 
+
+            }
+
+           
+
+            /* resetBoard function clears all used elements of the tic-tac-toe
+
+             * board and displays the players wins*/
+
+            function resetBoard() {
+
+                var board = document.getElementsByClassName("cell");
+
+                for (var i = 0; i < board.length; i++) {
+
+                    board[i].innerHTML = "";
+
+                }
+
+                oGameTotal = 0;
+
+                xGameTotal = 0;
+
+               
+
+                document.getElementById("xOutput").innerHTML = xPlayer +
+
+                        " has won " + xWins + " times";
+
+                document.getElementById("oOutput").innerHTML = oPlayer +
+
+                        " has won " + oWins + " times";
+
+                document.getElementById("cOutput").innerHTML = "Cat has won "
+
+                        + catWins + " times";
+
+            }
+
+            
+
+        </script>
+
+</head>
+
+<body>
+<center>
+
+    <h1> <em>THE</em> <br> TIC-TAC-TOE <br> SHOWDOWN!</h1>
+        
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    
+    <ins>PLAYER 1:</ins> <mark>X</mark>            <br>          <ins>PLAYER 2:</ins> <mark>O</mark>
+    <br>
+    <ins>CLICK BOX TO START</ins>
+ 
+
+        <div class='Row'>
+
+            <div class="cell" onClick="playerMoved(this, 1)"></div>
+
+            <div class="cell" onClick="playerMoved(this, 2)"></div>
+
+            <div class="cell" onClick="playerMoved(this, 4)"></div>
+
+        </div>
+
+ 
+
+        <div class='Row'>
+
+            <div class="cell" onClick="playerMoved(this, 8)"></div>
+
+            <div class="cell" onClick="playerMoved(this, 16)"></div>
+
+            <div class="cell" onClick="playerMoved(this, 32)"></div>
+
+        </div>
+
+ 
+
+        <div class='Row'>
+
+            <div class="cell" onClick="playerMoved(this, 64)"></div>
+
+            <div class="cell" onClick="playerMoved(this, 128)"></div>
+
+            <div class="cell" onClick="playerMoved(this, 256)"></div>
+
+        </div>
+
+       
+
+        <fieldset>
+
+            <p id="xOutput"></p>
+
+            <p id="oOutput"></p>
+
+            <p id="cOutput"></p>
+
+        </fieldset>
+
+       
+</center>
+    </body>
+
+</html>

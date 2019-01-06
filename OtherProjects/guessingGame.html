@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Guessing Game Final</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+
+            body{
+                background:url("../Images/PincelBackground.png");
+                background-size: 1700px 1000px;
+                background-repeat: no-repeat;
+                padding-top: 40px; 
+                background-color:black;
+                color:white;
+                text-align: center;
+            }
+
+            h1 {
+                color: black;
+            }
+
+            table th {
+                color: white;
+                background-color:black;
+            }  
+            table{
+
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+
+            }
+
+
+
+
+            form{
+                margin-left:auto;
+                margin-right:auto;
+            }
+
+        </style>
+        <script>
+            var theNumber = 0;
+            var thePictureNumber = 1;
+            var message = "Hello";
+            var name = prompt("What's Your Name?", "");
+            document.write("<h2>" + message + " " + name + " Ready To Play?");
+
+            function initialize() {
+
+                theNumber = Math.random();
+                theNumber = theNumber * 100;
+                theNumber = Math.floor(theNumber);
+
+                document.guessFrom.userInput.focus();
+                document.guessFrom.userInput.select();
+            }
+
+            function checkGuess() {
+                var userGuess = eval(document.guessForm.userGuess.value);
+                if (theNumber === userGuess) {
+
+                    refreshID = setInterval("changePicture ()", 250);
+                    document.guessForm.thePicture.src = "../Images/Face1.jpg";
+
+                } else {
+                    if (userGuess > theNumber) {
+                        alert(name + " You Are Too High!");
+                        document.guessForm.thePicture.src = "../Images/highFace.jpg";
+                    } else {
+                        alert(name + " You Are Too Low!");
+                        document.guessForm.thePicture.src = "../Images/LowFace.jpg";
+                    }
+                }
+
+            }
+            function changePicture()
+            {
+                if (thePictureNumber === 1)
+                    document.thePicture.src = "../Images/Face1.jpg";
+                if (thePictureNumber === 2)
+                    document.thePicture.src = "../Images/Face2.jpg";
+                if (thePictureNumber === 3)
+                    document.thePicture.src = "../Images/Face3.jpg";
+                thePictureNumber++;
+                if (thePictureNumber > 3)
+                    thePictureNumber = 1;
+            }
+
+            function stopInterval()
+            {
+                clearInterval(refreshID);
+                initialize();
+                document.guessForm.thePicture.src = "../Images/Face2.jpg";
+            }
+
+        </script>
+    </head>
+    <body onLoad="initialize()">
+        <h1> A <em> Game</em> Of Chance! </h1>
+
+        <table id="td01" border="8" style="width:50%">
+
+            <tr>
+                <th style="font-size:130%;" align="center"><b>My Guessing Game</b></th>  
+
+            </tr>
+
+            <tr>
+                <td bgcolor="black">
+                    <form name="guessForm" action="javascript:checkGuess()">
+                        Your Guess: <input type='text' name='userGuess' value='0' size='10' maxlength='2'>
+                        </td>
+                        </tr>
+
+                        <br/>
+
+                        <tr>
+                            <td>
+                                <input type="button" value="Take A Guess" onClick="checkGuess()">
+                                <input type="reset" value="Rest the Form" onClick="stopInterval()">
+                                <br/><br/> 
+                                <img src="../Images/Face2.jpg" name="thePicture">
+                            </td>
+                        </tr>
+
+
+                    </form>
+
+                    </body>
+                    </html>
+

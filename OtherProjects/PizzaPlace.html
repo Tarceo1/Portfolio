@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>The Pizza Spot </title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+
+            h1   
+            { border:10px solid #000;
+              border-radius: 15px 35px;
+              background-color:white;
+              color:red;
+              padding: 6px;
+              position:absolute;
+              top:30px;
+              left:50px; 
+
+            } 
+
+            body    { background:url("../Images/pizzaBackground.jpg");
+                      background-size: 1700px 1000px;
+                      background-repeat: no-repeat;
+                      padding-top: 40px; }
+            table th {
+                color: white;
+                background-color:black;
+            }  
+            table{
+                background-color: #f1f1c1;
+                margin-top: 70px;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: left;
+
+            }
+            fieldset {
+                display:inline;
+                padding-left: 5px;
+                padding-right: 5px;
+            }
+        </style>
+    </head>    
+
+    <body> 
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <h1> <em>The</em> Pizza Spot</h1> 
+
+        <form name="orderForm" action="MAILTO:aarceo1@bruinmail.slcc.edu" method='post' enctype='text/plain'>
+            <table id="td01" border="8" style="width:50%">
+                <tr>
+                    <th style="font-size:130%;" align="center"><b>Who?</b></th> 
+                    <th style="font-size:130%;" align="center"><b>Where</b></th>  
+                    <th style="font-size:130%;" align="center"><b>What?</b></th> 
+                </tr>
+                <tr>
+                    <td> <b> First Name: </b> <input type="text" name="firstName" maxlength="30" size="25">&nbsp;&nbsp; <br>
+                        <br>
+                        <br>
+                        <b>Last Name: </b> <input type="text" name="lastName" maxlength="30" size="25"><br>
+                        <br>
+                        <br>
+                        <b>Phone Number: </b> <input type="text" name="phone" size="25">          
+                    </td>
+
+                    <td>  <b>Address: </b> Line 1 (Street, Apt) <input type="text" name="address" maxlength="40" size="30">
+                        <br> 
+                        <br>
+                        <br>
+                        <br>
+
+                        <b>Address: </b> Line 2 (City,State) <input type="text" name="address" maxlength="40" size="30">
+                        <br> 
+                        <br>
+                        <br>
+                        <br>
+                        <b>Email: </b> (JohnDoe@Pizza.com) <input type="text" name="email" maxlength="120" size="30">
+                        <br> 
+                        <br>
+                    </td>
+                    <td>
+                        <!- -Pizza Size radio buttons- - ->
+                        <b>SIZE:</b>
+
+                        <input type="radio" name="Size" value="small"> Small &nbsp;
+                        <input type="radio" name="Size" value="medium" checked> Medium &nbsp;
+                        <input type="radio" name="Size" value="large" checked> Large &nbsp;
+                        <input type="radio" name="Size" value="party" checked> Party &nbsp;
+                        <br>
+                        <br>
+
+                        <hr>
+                        <!- - Pizza Crust drop down selections - ->
+                        <b>CRUST:</b>
+                        <select name="Crust">
+                            <option value="Thin">Thin</option>
+                            <option value="Hand Tossed">Hand Tossed</option>
+                            <option value="Stuffed Crust">Stuffed Crust</option>
+                            <option value="Deep Dish">Deep Dish</option>
+                            <option value="Deep Dish">Pretzel</option>
+                        </select>      
+                        <br>
+                        <br>
+
+                        <hr>
+
+                        <!- - Pizza Sauce drop down selections- ->
+                        <b>SAUCE:</b>
+                        <select name="Sauce">
+                            <option value="Marinara">Marinara</option>
+                            <option value="Alfredo">Alfredo</option>
+                            <option value="Garlic">Garlic</option>
+                            <option value="Dry">Dry</option>
+                        </select>
+                        <br>
+                        <br>
+                        <hr>
+
+                        <!- -Pizza Topping check box selection - - ->
+                        <fieldset>
+                            <legend><b>TOPPINGS:</b></legend>
+                            <table>
+                                <tr>
+                                    <td><input type="checkbox" name="toppings" value="pepperoni" checked> Pepperoni</td>
+                                    <td><input type="checkbox" name="toppings" value="sausage"> Sausage</td>
+                                    <td><input type="checkbox" name="toppings" value="chicken"> Chicken</td>
+                                    <td><input type="checkbox" name="toppings" value="anchovies"> Anchovies</td>
+                                    <td><input type="checkbox" name="toppings" value="steak"> Steak</td>
+                                    <td><input type="checkbox" name="toppings" value="beef"> Beef</td>
+                                    <td><input type="checkbox" name="toppings" value="pineapple"> Pineapple</td>
+                                    <td><input type="checkbox" name="toppings" value="green peppers"> Green Pepper</td>
+                                    <td><input type="checkbox" name="toppings" value="onion"> Onion</td>
+
+                                </tr>
+                            </table>
+                        </fieldset>
+                    </td>
+                </tr>
+                <tr>
+                    <th align="center" colspan="3"> 
+                        <b>SPECIAL REQUESTS:</b>
+                    </th>
+
+                </tr>
+                <td colspan="3"> <textarea rows="4" cols="150" name="Customer Request">
+                                     Enter text here... </textarea> </td>
+                <br>
+                <tr> 
+                    <td colspan="3" align="center">  <input type="submit" value="Send" > 
+
+                        <input type="reset" ... > 
+                    </td>    
+                </tr>
+
+            </table>
+            <br>
+            <br>
+            <br>
+            <br>
+        </form>
+    </body>
+</html>
